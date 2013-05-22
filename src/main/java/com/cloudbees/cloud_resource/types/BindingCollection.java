@@ -9,5 +9,5 @@ import java.util.List;
  */
 @CloudResourceType("https://types.cloudbees.com/binding/collection")
 public interface BindingCollection extends CloudResource{
-    List<Edge> edges();
+    List<? extends Edge> edges();
 }

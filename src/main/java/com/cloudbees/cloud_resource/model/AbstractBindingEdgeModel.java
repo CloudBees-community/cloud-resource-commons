@@ -3,12 +3,14 @@ package com.cloudbees.cloud_resource.model;
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 import java.util.Date;
 
 /**
  * @author Vivek Pandey
  */
+@MappedSuperclass
 public class AbstractBindingEdgeModel {
     private Long id;
     private String source;
