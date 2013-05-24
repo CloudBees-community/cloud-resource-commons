@@ -23,8 +23,12 @@ public abstract class CloudResourceSupport implements CloudResource {
     @GET
     @Produces(CloudResource.CONTENT_TYPE)
     public Response doIndex() {
-        ResponseBuilder rsp = Response.ok(this);
-        for (String t : CloudResourceTypes.of(this)) {
+        return asResponse(this);
+    }
+
+    public static Response asResponse(CloudResource res) {
+        ResponseBuilder rsp = Response.ok(res);
+        for (String t : CloudResourceTypes.of(res)) {
             rsp.header("X-Cloud-Resource-Type",t);
         }
         return rsp.build();
