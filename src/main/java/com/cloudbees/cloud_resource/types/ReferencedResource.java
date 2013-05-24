@@ -5,7 +5,6 @@ import org.codehaus.jackson.annotate.JsonProperty;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
-import java.util.List;
 
 /**
  * @author Kohsuke Kawaguchi
@@ -22,7 +21,7 @@ public class ReferencedResource {
      */
     private final Collection<String> types;
 
-    public ReferencedResource(String url, List<String> types) {
+    public ReferencedResource(String url, Collection<String> types) {
         this.url = url;
         this.types = new ArrayList<String>(types);
     }
