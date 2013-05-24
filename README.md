@@ -11,3 +11,10 @@ To use this library, add the following dependency to your Maven POM:
     </dependency>
 
 
+
+
+TODO
+====
+Split this into multiple modules with different assumptions.
+For example, the types packag has almost no external dependency and usable everywhere,
+but the model package currently has some JPA annotations.
