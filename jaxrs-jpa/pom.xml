@@ -7,7 +7,7 @@
     <version>0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>cloud-resource-commons-jersey-jpa</artifactId>
+  <artifactId>cloud-resource-commons-jaxrs-jpa</artifactId>
   <name>Cloud Resource Commons :: JPA + JAX-RS</name>
 
   <dependencies>

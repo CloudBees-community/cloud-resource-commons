@@ -11,6 +11,6 @@
 
     <modules>
       <module>core</module>
-      <module>jersey-jpa</module>
+      <module>jaxrs-jpa</module>
     </modules>
 </project>
