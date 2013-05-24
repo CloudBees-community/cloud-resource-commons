@@ -13,5 +13,5 @@ import java.util.List;
  */
 public abstract class CloudResourceProviderSupport extends CloudResourceSupport implements CloudResourceProvider {
     @JsonProperty
-    public abstract List<ReferencedResource> edges();
+    public abstract List<ReferencedResource> resources();
 }

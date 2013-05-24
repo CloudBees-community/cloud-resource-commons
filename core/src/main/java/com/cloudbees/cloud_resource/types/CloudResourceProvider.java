@@ -7,6 +7,6 @@ import java.util.List;
  */
 @CloudResourceType("https://types.cloudbees.com/resource/provider")
 public interface CloudResourceProvider {
-    public List<ReferencedResource> edges();
+    public List<ReferencedResource> resources();
 
 }
