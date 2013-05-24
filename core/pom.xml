@@ -2,51 +2,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <modelVersion>4.0.0</modelVersion>
+  <modelVersion>4.0.0</modelVersion>
 
+  <parent>
     <groupId>com.cloudbees.cloud_resource</groupId>
-    <artifactId>cloud-resource-commons</artifactId>
+    <artifactId>cloud-resource-commons-parent</artifactId>
     <version>0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>CloudBees Cloud Resource</name>
-    <description>CloudBees Cloud Resource</description>
-    <properties>
-        <jersey-version>1.16</jersey-version>
-    </properties>
-    <build>
-        <finalName>${artifactId}</finalName>
-    </build>
-    <dependencies>
-        <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-client</artifactId>
-            <version>${jersey-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.ws.rs</groupId>
-            <artifactId>jsr311-api</artifactId>
-            <version>1.1.1</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.jersey</groupId>
-            <artifactId>jersey-json</artifactId>
-            <version>${jersey-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.sun.jersey.contribs</groupId>
-            <artifactId>jersey-guice</artifactId>
-            <version>${jersey-version}</version>
-        </dependency>
-        <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
-            <scope>provided</scope>
-        </dependency>
-      <dependency>
-          <groupId>javax.persistence</groupId>
-          <artifactId>persistence-api</artifactId>
-          <version>1.0.2</version>
-      </dependency>
-    </dependencies>
+  </parent>
+
+  <artifactId>cloud-resource-commons</artifactId>
+  <name>CloudBees Cloud Resource</name>
+  <description>CloudBees Cloud Resource</description>
+
+  <dependencies>
+    <dependency>
+      <groupId>org.codehaus.jackson</groupId>
+      <artifactId>jackson-mapper-asl</artifactId>
+      <version>1.9.11</version>
+    </dependency>
+  </dependencies>
 </project>

@@ -1,4 +1,4 @@
-package com.cloudbees.cloud_resource.model;
+package org.cloudbees.cloud_resource.model;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
