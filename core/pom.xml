@@ -11,8 +11,7 @@
   </parent>
 
   <artifactId>cloud-resource-commons</artifactId>
-  <name>CloudBees Cloud Resource</name>
-  <description>CloudBees Cloud Resource</description>
+  <name>Cloud Resource Commons :: Core</name>
 
   <dependencies>
     <dependency>
