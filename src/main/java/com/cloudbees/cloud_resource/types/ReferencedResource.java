@@ -3,6 +3,7 @@ package com.cloudbees.cloud_resource.types;
 import org.codehaus.jackson.annotate.JsonProperty;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -19,14 +20,16 @@ public class ReferencedResource {
     /**
      * Resource types implemented by the cloud resource represented by the url
      */
-    private final List<String> types;
+    private final Collection<String> types;
 
-    public ReferencedResource(String url, List<CloudResourceType> types) {
+    public ReferencedResource(String url, List<String> types) {
         this.url = url;
-        this.types = new ArrayList<String>();
-        for (CloudResourceType t : types) {
-            this.types.add(t.value());
-        }
+        this.types = new ArrayList<String>(types);
+    }
+
+    public ReferencedResource(String url, Class<?> type) {
+        this.url = url;
+        this.types = CloudResourceTypes.of(type);
     }
 
     @JsonProperty("url")
@@ -35,8 +38,8 @@ public class ReferencedResource {
     }
 
     @JsonProperty("types")
-    public List<String> getTypes() {
-        return Collections.unmodifiableList(types);
+    public Collection<String> getTypes() {
+        return Collections.unmodifiableCollection(types);
     }
 
 }
