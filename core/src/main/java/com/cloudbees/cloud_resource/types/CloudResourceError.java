@@ -18,7 +18,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
  * @author Vivek Pandey
  */
 @CloudResourceType("https://types.cloudbees.com/error")
-public class CloudResourceError {
+public class CloudResourceError implements CloudResource {
 
     private final String message;
 
