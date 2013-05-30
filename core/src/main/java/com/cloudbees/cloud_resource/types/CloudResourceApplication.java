@@ -8,7 +8,7 @@ import org.codehaus.jackson.annotate.JsonProperty;
  * @author Vivek Pandey
  */
 @CloudResourceType("https://types.cloudbees.com/paas/application")
-public interface CloudResourceApplication{
+public interface CloudResourceApplication extends CloudResource{
 
     @JsonProperty("application")
     public Application application();
