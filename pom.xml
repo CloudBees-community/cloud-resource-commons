@@ -13,4 +13,17 @@
       <module>core</module>
       <module>jaxrs-jpa</module>
     </modules>
+     <licenses>
+    <license>
+      <name>The Apache Software License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+
+  <scm>
+    <connection>scm:git:git://github.com/CloudBees-community/cloud-resource-commons.git</connection>
+    <developerConnection>scm:git:git@github.com:CloudBees-community/cloud-resource-commons.git</developerConnection>
+    <url>http://github.com/CloudBees-community/cloud-resource-commons</url>
+  </scm>
 </project>
