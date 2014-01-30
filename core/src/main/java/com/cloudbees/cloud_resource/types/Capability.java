@@ -5,7 +5,8 @@ package com.cloudbees.cloud_resource.types;
  */
 public enum Capability {
     READ("https://types.cloudbees.com/resource/read"),
-    BIND("https://types.cloudbees.com/binding/bind");
+    BIND("https://types.cloudbees.com/binding/bind"),
+    REGISTER("https://types.cloudbees.com/resource/provider/crp/register");
 
     private final String capability;
     private Capability(String value) {
@@ -15,11 +16,11 @@ public enum Capability {
     /**
      * Gives the Cloud Resource Oauth scope for the given destination domain.
      *
-     * @param destination domain of the target, for example: acme.example.com
+     * @param domain domain of the target, for example: acme.example.com
      *
-     * @return String representation of crs URI, for example, crs://acme.example.com!https://types.cloudbees.com/resource/read
+     * @return String representation of crs URI, for example, crs://acme.example.com/!https://types.cloudbees.com/resource/read
      */
-    public String oauthScope(String destination){
-        return "crs://"+destination+"!"+capability;
+    public String oauthScope(String domain){
+        return String.format("crs://%s/!%s",domain,capability);
     }
 }
