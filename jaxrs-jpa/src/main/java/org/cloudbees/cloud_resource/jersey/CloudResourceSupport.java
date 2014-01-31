@@ -2,6 +2,7 @@ package org.cloudbees.cloud_resource.jersey;
 
 import com.cloudbees.cloud_resource.types.CloudResource;
 import com.cloudbees.cloud_resource.types.CloudResourceTypes;
+import com.cloudbees.cloud_resource.types.ReferencedResource;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Produces;
@@ -29,6 +30,14 @@ public abstract class CloudResourceSupport implements CloudResource {
     public static Response asResponse(CloudResource res) {
         ResponseBuilder rsp = Response.ok(res);
         for (String t : CloudResourceTypes.of(res)) {
+            rsp.header("X-Cloud-Resource-Type",t);
+        }
+        return rsp.build();
+    }
+
+    public static Response asResponse(ReferencedResource referencedResource) {
+        ResponseBuilder rsp = Response.ok(referencedResource);
+        for (String t : referencedResource.getTypes()) {
             rsp.header("X-Cloud-Resource-Type",t);
         }
         return rsp.build();
