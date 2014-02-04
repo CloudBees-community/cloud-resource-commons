@@ -3,7 +3,7 @@
   <parent>
     <groupId>com.cloudbees.cloud_resource</groupId>
     <artifactId>cloud-resource-commons-parent</artifactId>
-    <version>0.2-SNAPSHOT</version>
+    <version>1.0</version>
   </parent>
 
   <artifactId>cloud-resource-commons-jaxrs-jpa</artifactId>
