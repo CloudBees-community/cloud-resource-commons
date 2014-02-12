@@ -29,6 +29,12 @@ public @interface Secure {
     String[] scopes() default {};
 
     /**
+     * If true all scopes (including the ones derived from capabilities) will be validated.
+     * If false, oauth token will be inspected to carry at least one of the scope
+     */
+    boolean validateAllScopes() default true;
+
+    /**
      * Cloud Resource capabilities. One of the capability must be present
      */
     String[] capabilities() default {};
