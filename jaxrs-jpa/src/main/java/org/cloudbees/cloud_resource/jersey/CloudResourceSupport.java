@@ -23,6 +23,7 @@ public abstract class CloudResourceSupport implements CloudResource {
      */
     @GET
     @Produces(CloudResource.CONTENT_TYPE)
+    @Secure(capabilities={"https://types.cloudbees.com/resource/read"})
     public Response doIndex() {
         return asResponse(this);
     }
