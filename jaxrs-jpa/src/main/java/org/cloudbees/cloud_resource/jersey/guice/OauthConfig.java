@@ -6,7 +6,8 @@ package org.cloudbees.cloud_resource.jersey.guice;
  *
  * A CRP implementation should bind it to actual implementation class.
  *
- * This example shows how you can bind a Github CRP config object to CrpConfig with JerseyServletModule
+ * This example shows how you can bind a Github CRP config object to OauthConfig with JerseyServletModule
+ *
  * <pre>
  * {@code
  * public class GuiceServletConfig extends GuiceServletContextListener {
@@ -17,7 +18,7 @@ package org.cloudbees.cloud_resource.jersey.guice;
  *
  *              @Override
  *              protected void configureServlets() {
- *                  bind(CrpConfig.class).to(GithubConfig.class);
+ *                  bind(OauthConfig.class).to(GithubOauthConfig.class);
  *              }
  *          }
  *      }
@@ -26,7 +27,7 @@ package org.cloudbees.cloud_resource.jersey.guice;
  *
  * @author Vivek Pandey
  */
-public abstract class CrpConfig {
+public abstract class OauthConfig {
     /**
      * OAuth application clientId
      */
@@ -36,11 +37,4 @@ public abstract class CrpConfig {
      * OAuth application clientSecret
      */
     public abstract String getClientSecret();
-
-    /**
-     * Get Host URL where the CRP is running name, in the format host[:port], for example example.com or example.com:443
-     *
-     * This method must return non-null value if it enforces Cloud Resource capability check in during authentication
-     */
-    public abstract String getHostURL();
 }
