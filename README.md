@@ -1,4 +1,4 @@
-This is a Java client library to develop CloudBees Cloud Resource Provider.
+This is a Java client library to develop CloudBees Cloud Resource Provider. For details on Cloud Resource, see the [Cloud Resource specification] (https://docs.google.com/document/d/1SjM36eXu4sy5HeTMzKouy1AWcBlJkBIPx2vmnflFacE/edit?usp=sharing)
 
 Using the code
 ==============
@@ -7,14 +7,7 @@ To use this library, add the following dependency to your Maven POM:
     <dependency>
       <groupId>com.cloudbees</groupId>
       <artifactId>cloudbees-api-client</artifactId>
-      <version>0.1-SNAPSHOT</version>
+      <version>1.2</version>
     </dependency>
 
 
-
-
-TODO
-====
-Split this into multiple modules with different assumptions.
-For example, the types packag has almost no external dependency and usable everywhere,
-but the model package currently has some JPA annotations.
