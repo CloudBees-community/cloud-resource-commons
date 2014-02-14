@@ -1,5 +1,6 @@
 package org.cloudbees.cloud_resource.jersey;
 
+import com.cloudbees.cloud_resource.auth.Secure;
 import com.cloudbees.cloud_resource.types.CloudResource;
 import com.cloudbees.cloud_resource.types.CloudResourceTypes;
 import com.cloudbees.cloud_resource.types.ReferencedResource;

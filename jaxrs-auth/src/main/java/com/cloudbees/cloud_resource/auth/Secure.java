@@ -1,4 +1,4 @@
-package org.cloudbees.cloud_resource.jersey;
+package com.cloudbees.cloud_resource.auth;
 
 import java.lang.String;import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

@@ -1,11 +1,11 @@
-package org.cloudbees.cloud_resource.jersey.guice;
+package com.cloudbees.cloud_resource.auth.guice;
 
 import com.google.inject.TypeLiteral;
 import com.google.inject.spi.TypeEncounter;
 import com.google.inject.spi.TypeListener;
 import org.slf4j.Logger;
 
-import java.lang.Override;import java.lang.reflect.Field;
+import java.lang.reflect.Field;
 
 /**
  * @author Vivek Pandey

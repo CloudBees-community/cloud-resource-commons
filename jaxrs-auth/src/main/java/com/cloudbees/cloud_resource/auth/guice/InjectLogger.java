@@ -1,8 +1,4 @@
-package org.cloudbees.cloud_resource.jersey;
-
-/**
- * @author Vivek Pandey
- */
+package com.cloudbees.cloud_resource.auth.guice;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -12,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * @author Vivek Pandey
  */
+@Target({ElementType.FIELD})
 @Retention(RetentionPolicy.RUNTIME)
-@Target({ElementType.PARAMETER, ElementType.METHOD, ElementType.FIELD})
-public @interface Principal {
+public @interface InjectLogger {
 }

@@ -18,6 +18,7 @@
     <modules>
       <module>core</module>
       <module>jaxrs-jpa</module>
+      <module>jaxrs-auth</module>
     </modules>
      <licenses>
     <license>

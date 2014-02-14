@@ -1,4 +1,4 @@
-package org.cloudbees.cloud_resource.jersey.guice;
+package com.cloudbees.cloud_resource.auth.guice;
 
 import com.google.inject.Singleton;
 
