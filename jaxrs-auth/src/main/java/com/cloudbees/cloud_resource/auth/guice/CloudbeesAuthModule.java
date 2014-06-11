@@ -1,7 +1,6 @@
 package com.cloudbees.cloud_resource.auth.guice;
 
 import com.cloudbees.cloud_resource.auth.jersey.Authenticator;
-import com.cloudbees.cloud_resource.auth.jersey.CorsFilter;
 import com.cloudbees.cloud_resource.auth.jersey.OauthAuthenticator;
 import com.google.inject.AbstractModule;
 import com.google.inject.matcher.Matchers;

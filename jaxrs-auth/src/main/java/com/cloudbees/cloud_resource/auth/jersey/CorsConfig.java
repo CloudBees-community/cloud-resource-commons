@@ -1,16 +1,17 @@
 package com.cloudbees.cloud_resource.auth.jersey;
 
-import com.cloudbees.cloud_resource.auth.Cors;
-import com.google.inject.Singleton;
-
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+import java.util.Map;
 
 /**
  * @author: Vivek Pandey
  */
 public class CorsConfig {
 
-    private static final String PREFIX = "com.cloudbees.cloud_resource.auth.";
+    private static final String PREFIX = "com.cloudbees.cloud_resource.auth.cors.";
 
     /**
      * Expiration of pre-flight response caching in seconds as java.lang.Integer. Default is 24 hours.

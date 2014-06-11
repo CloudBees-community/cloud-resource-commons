@@ -1,13 +1,9 @@
 package com.cloudbees.cloud_resource.auth.jersey;
 
-import com.cloudbees.cloud_resource.auth.AuthException;
 import com.cloudbees.cloud_resource.auth.Secure;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import com.sun.jersey.api.model.AbstractMethod;
-import com.sun.jersey.spi.container.ContainerRequest;
-import com.sun.jersey.spi.container.ContainerRequestFilter;
-import com.sun.jersey.spi.container.ContainerResponseFilter;
 import com.sun.jersey.spi.container.ResourceFilter;
 import com.sun.jersey.spi.container.ResourceFilterFactory;
 import org.slf4j.Logger;
