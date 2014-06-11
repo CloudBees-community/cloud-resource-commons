@@ -1,4 +1,4 @@
-package com.cloudbees.cloud_resource.auth.guice;
+package com.cloudbees.cloud_resource.auth.jersey;
 
 import com.cloudbees.cloud_resource.auth.Cors;
 import com.google.inject.Singleton;
@@ -58,7 +58,7 @@ public class CorsConfig {
 
     public CorsConfig(Map<String, Object> props) {
         this.allowOrigin = props.containsKey(ALLOW_ORIGIN) ? (String)props.get(ALLOW_ORIGIN) : "*";
-        this.exposeHeaders = props.containsKey(ALLOW_HEADERS) ? (String)props.get(ALLOW_HEADERS) : "";
+        this.exposeHeaders = props.containsKey(EXPOSE_HEADERS) ? (String)props.get(EXPOSE_HEADERS) : "";
         this.maxAge = props.containsKey(MAX_AGE) ? (Integer)props.get(MAX_AGE) : 24*3600; //24 hrous default
         if(props.containsKey(ALLOW_HEADERS) && !((String)props.get(ALLOW_HEADERS)).isEmpty()){
             for(String h:((String)props.get(ALLOW_HEADERS)).split(",")){
@@ -96,5 +96,16 @@ public class CorsConfig {
     public boolean isValidAllowRequestMethod(String header){
         return allowedMethods.contains(header);
     }
+
+    public final class Headers{
+        public static final String ALLOW_ORIGIN = "Access-Control-Allow-Origin";
+        public static final String EXPOSE_HEADERS = "Access-Control-Expose-Headers";
+        public static final String MAX_AGE = "Access-Control-Max-Age";
+        public static final String ALLOW_CREDENTIALS = "Access-Control-Allow-Credentials";
+        public static final String ALLOW_METHODS = "Access-Control-Allow-Methods";
+        public static final String ALLOW_HEADERS = "Access-Control-Allow-Headers";
+        public static final String ORIGIN = "Origin";
+    }
+
 
 }

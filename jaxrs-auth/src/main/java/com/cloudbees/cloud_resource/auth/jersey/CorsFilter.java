@@ -1,7 +1,5 @@
 package com.cloudbees.cloud_resource.auth.jersey;
 
-import com.cloudbees.cloud_resource.auth.Cors;
-import com.cloudbees.cloud_resource.auth.guice.CorsConfig;
 import com.sun.jersey.api.core.ResourceConfig;
 import com.sun.jersey.spi.container.ContainerRequest;
 import com.sun.jersey.spi.container.ContainerResponse;
@@ -27,48 +25,48 @@ public class CorsFilter implements ContainerResponseFilter {
 
     @Override
     public ContainerResponse filter(ContainerRequest request, ContainerResponse response) {
-        if(request.getHeaderValue("Origin") != null) {
+        if(request.getHeaderValue(CorsConfig.Headers.ORIGIN) != null) {
             MultivaluedMap<String, Object> headers = response.getHttpHeaders();
 
             if(!config.allowOrigin.isEmpty() && !config.allowOrigin.equals("*")) {
                 String s = String.format("^https?://[^/@]*[.]?%s",extractWithoutWildCard(config.allowOrigin));
                 if(request.getHeaderValue("Origin").matches(s)) {
-                    headers.add(Cors.Headers.ALLOW_ORIGIN, request.getHeaderValue("Origin"));
+                    headers.add(CorsConfig.Headers.ALLOW_ORIGIN, request.getHeaderValue("Origin"));
                 }else{
                     logger.error(String.format("Origin: %s did not match allowed origin pattern: %s", request.getHeaderValue("Origin"), config.allowOrigin));
                     return returnPreflightResponse(response);
                 }
             }else{
-                headers.add(Cors.Headers.ALLOW_ORIGIN, request.getHeaderValue("Origin"));
+                headers.add(CorsConfig.Headers.ALLOW_ORIGIN, request.getHeaderValue("Origin"));
             }
             if (request.getHeaderValue("Access-Control-Request-Method") != null){
                 if (config.isValidAllowRequestMethod(request.getHeaderValue("Access-Control-Request-Method"))) {
                     if(request.getHeaderValue("Access-Control-Request-Headers") != null) {
                         if (config.isValidAllowRequestHeaders(request.getHeaderValue("Access-Control-Request-Headers").split(","))) {
-                            headers.add(Cors.Headers.ALLOW_HEADERS, request.getHeaderValue("Access-Control-Request-Headers"));
+                            headers.add(CorsConfig.Headers.ALLOW_HEADERS, request.getHeaderValue("Access-Control-Request-Headers"));
                         } else {
                             logger.error("Invalid Access-Control-Request-Headers: "+request.getHeaderValue("Access-Control-Request-Headers"));
                             return response;
                         }
                     }
-                    headers.add(Cors.Headers.ALLOW_METHODS, config.allowedMethodsString);
+                    headers.add(CorsConfig.Headers.ALLOW_METHODS, config.allowedMethodsString);
 
                 } else {
                     logger.error("Invalid Access-Control-Request-Method: "+request.getHeaderValue("Access-Control-Request-Method"));
                     return response;
                 }
                 if(config.maxAge > 0){
-                    headers.add(Cors.Headers.MAX_AGE, config.maxAge);
+                    headers.add(CorsConfig.Headers.MAX_AGE, config.maxAge);
                 }
 
             }else{
                 if(!config.exposeHeaders.isEmpty()){
-                    headers.add(Cors.Headers.EXPOSE_HEADERS, config.exposeHeaders);
+                    headers.add(CorsConfig.Headers.EXPOSE_HEADERS, config.exposeHeaders);
                 }
             }
 
             if(config.allowCredentials){
-                headers.add(Cors.Headers.ALLOW_CREDENTIALS, true);
+                headers.add(CorsConfig.Headers.ALLOW_CREDENTIALS, true);
             }
             return returnPreflightResponse(response);
         }
@@ -89,4 +87,5 @@ public class CorsFilter implements ContainerResponseFilter {
         }
         return x;
     }
+
 }
