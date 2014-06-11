@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Secure {
     /**
-     * Comma separated authenticators telling what authentication methods to use.
+     * Authenticator to authenticate the  method with
      */
     Authenticator with() default Authenticator.OAUTH;
 

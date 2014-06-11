@@ -62,40 +62,13 @@ public class AuthResourceFilter implements ResourceFilterFactory {
             secureAnnotation = am.getAnnotation(Secure.class);
         }
 
-        return Collections.<ResourceFilter>singletonList(new Filter(secureAnnotation, am));
+        if(secureAnnotation != null){
+            return Collections.<ResourceFilter>singletonList(new OauthFilter(secureAnnotation, oauthAuthenticator, am));
+        }
+
+        return Collections.EMPTY_LIST;
+
     }
 
-    private class Filter implements ResourceFilter, ContainerRequestFilter {
-        private final  Secure secureAnnotation;
-        private  final AbstractMethod abstractMethod;
 
-
-        private Filter(Secure secureAnnotation, AbstractMethod abstractMethod) {
-            this.secureAnnotation = secureAnnotation;
-            this.abstractMethod = abstractMethod;
-        }
-
-        @Override
-        public ContainerRequest filter(ContainerRequest containerRequest) {
-            Secure.Authenticator authenticator = secureAnnotation.with();
-            if (authenticator == Secure.Authenticator.OAUTH) {
-                return oauthAuthenticator.authenticate(containerRequest, secureAnnotation);
-            } else {
-                logger.error(String.format("Invalid authenticator  %s for method %s", authenticator, containerRequest.getPath()));
-                throw new AuthException(500, "Invalid authenticator: " + authenticator);
-            }
-        }
-
-        @Override
-        public ContainerRequestFilter getRequestFilter() {
-            return this;
-        }
-
-        @Override
-        public ContainerResponseFilter getResponseFilter() {
-            return null;
-        }
-
-
-    }
 }
