@@ -18,7 +18,7 @@ import java.util.Map;
 /**
  * Implements HSTS spec as defined in RFC-6797, http://tools.ietf.org/html/rfc6797
  *
- * @author: Vivek Pandey
+ * @author Vivek Pandey
  */
 public class HstsFilter implements ContainerRequestFilter, ContainerResponseFilter {
     private final HstsConfig config;

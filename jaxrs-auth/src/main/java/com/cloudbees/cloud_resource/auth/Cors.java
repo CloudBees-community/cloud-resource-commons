@@ -18,6 +18,7 @@ import java.lang.annotation.Target;
  * <ul>HTTP Option method handling</ul>
  * <ul>Response to carry CORS headers</ul>
  *
+ * @author Vivek Pandey
  *
  * @see com.cloudbees.cloud_resource.auth.jersey.CorsFilter
  */

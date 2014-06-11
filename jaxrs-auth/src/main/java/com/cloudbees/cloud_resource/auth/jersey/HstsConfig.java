@@ -3,7 +3,7 @@ package com.cloudbees.cloud_resource.auth.jersey;
 import java.util.Map;
 
 /**
- * @author: Vivek Pandey
+ * @author Vivek Pandey
  */
 public class HstsConfig {
     private static final String PREFIX = "com.cloudbees.cloud_resource.auth.hsts.";
