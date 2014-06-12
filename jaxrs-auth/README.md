@@ -1,16 +1,16 @@
-This is CloudBees JAX-RS Jersey based OAuth authentication Guice Module and Cors response filter to automatically add
-support for Cors header in the response.
+This is CloudBees JAX-RS Jersey and Guice based library. It provides support for **OAuth**, **CORS** and **HSTS** features.
 
 ## OAuth support
 
 ### Annotate your JAX-RS resources with @Secure annotation
 
 ```java
-@Path("{repo}")
-@Secure(capabilities={"https://types.cloudbees.com/resource/read"}, scopes={...})
-public GitHubRepository getRepository(@PathParam("repo") String repo) throws IOException {
-    ...
-}
+
+    @Path("{repo}")
+    @Secure(capabilities={"https://types.cloudbees.com/resource/read"}, scopes={...})
+    public GitHubRepository getRepository(@PathParam("repo") String repo) throws IOException {
+        ...
+    }
 ```
 
 ### Add CloudbeesAuthModule to Guice Injector
@@ -67,6 +67,7 @@ public GitHubRepository getRepository(@PathParam("repo") String repo) throws IOE
 CORS support is enabled by Jersey ResourceResponseFilter implementation. To enable it:
 
 ```java
+
     params.put(ResourceConfig.PROPERTY_CONTAINER_RESPONSE_FILTERS,
                                     CorsFilter.class.getName());
 ```
@@ -75,5 +76,41 @@ By default it allows all origins. To restrict your app to specific origins you c
 to "*.example.com" or "example.com" or "*".
 
 ```java
+
+    //Restrict only to requests from *.cloudbees.com
     params.put(CorsConfig.ALLOW_ORIGIN, "*.cloudbees.com");
+
+    //only GET and POST methods support CORS
+    params.put(CorsConfig.ALLOW_METHODS, "GET POST");
+
+    //allow customer header X-FOO and X-BAR on the post-flight request
+    params.put(CorsConfig.ALLOW_HEADERS, "X-FOO,X-BAR");
+
+    //Tells UA how long it can cache the preflight response
+    params.put(CorsConfig.MAX_AGE, 3600);
+
+    //White listed headers that browser can see
+    params.put(CorsConfig.EXPOSE_HEADERS, "X-My-Custom-Header1 X-My-Custom-Header2");
+```
+
+There are other configurable CORS parameters, please see CorsConfig class for more details.
+
+## HSTS support
+
+To enable HSTS support add HstsFilter to Jersey request and response filter chain.
+
+```java
+
+    params.put(ResourceConfig.PROPERTY_CONTAINER_REQUEST_FILTERS,
+                                    HstsFilter.class.getName());
+    params.put(ResourceConfig.PROPERTY_CONTAINER_RESPONSE_FILTERS,
+                                    HstsFilter.class.getName());
+```
+
+You can configure max-age and includeSubDomains argument values. Default value for max-age is 1 year and
+includeSubDomains is false.
+
+```java
+     params.put(HstsConfig.MAX_AGE, 31536000); //1year
+     params.put(HstsConfig.INCLUDE_SUB_DOMAINS, false);
 ```

@@ -18,7 +18,7 @@ public class HstsConfig {
         if(props.containsKey(MAX_AGE) && (Integer)props.get(MAX_AGE) >=0 ){
             this.maxAge=(Integer)props.get(MAX_AGE);
         }else{
-            this.maxAge = 31536000;
+            this.maxAge = 31536000;//1 year
         }
 
         if(props.containsKey(INCLUDE_SUB_DOMAINS) && (Boolean)props.get(INCLUDE_SUB_DOMAINS)){
