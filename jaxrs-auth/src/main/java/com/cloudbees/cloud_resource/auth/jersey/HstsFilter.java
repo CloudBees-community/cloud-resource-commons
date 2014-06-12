@@ -40,13 +40,16 @@ public class HstsFilter implements ContainerRequestFilter, ContainerResponseFilt
 
     @Override
     public ContainerResponse filter(ContainerRequest request, ContainerResponse response) {
-        MultivaluedMap<String,Object> headers = response.getHttpHeaders();
-        List<Object> hstsValues = new ArrayList<Object>();
-        hstsValues.add(String.format("%s=%s",Headers.MAX_AGE, config.maxAge));
-        if(config.includeSubDomains){
-            hstsValues.add(Headers.INCLUDE_SUB_DOMAINS);
+        //Add HSTS header only with secure transport
+        if(request.isSecure()) {
+            MultivaluedMap<String, Object> headers = response.getHttpHeaders();
+            List<Object> hstsValues = new ArrayList<Object>();
+            hstsValues.add(String.format("%s=%s", Headers.MAX_AGE, config.maxAge));
+            if (config.includeSubDomains) {
+                hstsValues.add(Headers.INCLUDE_SUB_DOMAINS);
+            }
+            headers.put(Headers.HSTS, hstsValues);
         }
-        headers.put(Headers.HSTS, hstsValues);
         return response;
     }
 
